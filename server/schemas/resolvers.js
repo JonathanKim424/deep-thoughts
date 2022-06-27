@@ -52,6 +52,7 @@ const resolvers = {
         },
         addThought: async (parent, args, context) => {
             if (context.user) {
+                console.log("Check");
                 const thought = await Thought.create({ ...args, username: context.user.username });
                 await User.findByIdAndUpdate(
                     { _id: context.user._id },
